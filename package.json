@@ -1,0 +1,22 @@
+{
+  "name": "mysql_rabc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/rabc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rabc"
+  ],
+  "author": "邓登攀",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.13.0",
+    "q": "^1.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pandashuai/mysql_rabc.git"
+  }
+}
