@@ -1,5 +1,5 @@
 {
-  "name": "mysql_rabc",
+  "name": "mysql_rbac",
   "version": "1.0.0",
   "description": "",
   "main": "lib/rabc.js",
@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/pandashuai/mysql_rabc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pandashuai/mysql_rabc/issues"
   }
 }
