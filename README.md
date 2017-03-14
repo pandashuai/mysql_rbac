@@ -111,6 +111,24 @@ app.use(rbac({
 
 注意：要在express-session配置参数之后初始化
 
+如： 
+var session = require('express-session');
+var rbac = require('mysql_rbac');
+<!-- express-session初始化  -->
+app.use(session({
+    secret: 'mysql_rbac',
+    cookie: { maxAge: 60 * 60 * 24 * 1000 },
+    name: 'NODESESSID'
+}));
+
+<!-- mysql_rbac初始化  -->
+app.use(rbac({
+  // 参数
+}));
+
+以下挂载你的路由
+app.use('/', index);
+
 ```
 
 #### 3，使用
