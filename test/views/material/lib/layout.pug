@@ -1,0 +1,19 @@
+doctype html
+html
+	head
+		title= title
+		//- 引入公共样式
+		include styleJS
+		//- 引入自定义区域样式
+		block styleJS
+	body
+		//- 引入定义区域变量
+		block variable
+		//- 引入公共代码块
+		include ../../module/mixins
+		//- 引入区域代码块
+		include mixins
+		//- 引入头部
+		include header
+		//- 重置主体部分
+		block content

@@ -1,0 +1,38 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.bordered-bottom.bordered-blue
+						span.widget-caption 添加用户
+					.widget-body
+						div
+							form(role='form', method="post")
+								.form-group
+									label(for='exampleInputEmail1') 用户账号：
+									input#exampleInputEmail1.form-control(name="username", type='text', placeholder='')
+								.form-group
+									label(for='exampleInputPassword1') 密码：
+									input#exampleInputPassword1.form-control(name="password", type='password', placeholder='')
+								.form-group
+									label 所属角色
+									.row
+										.col-md-2
+											select.form-control(name='role_id', data-bv-field='country')
+												option(value='') 请选择角色
+												each data, key in rolelists
+													option(value=data.id) #{data.name}
+												i.form-control-feedback(data-bv-field='country', style='display: none;')
+												i.form-control-feedback(data-bv-field='country', style='display: none;')
+										.col-md-2
+											button.btn.btn-blue.addrole 添加
+								button.btn.btn-blue(type='submit') 保存添加
+block javascripts
+	script.
+		$('.addrole').click(function(e){
+			var $siblings = $(this).parent().prev();
+			$(this).parent().before($siblings.clone(true));
+			return false;
+		});

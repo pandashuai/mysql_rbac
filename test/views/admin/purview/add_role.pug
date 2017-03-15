@@ -1,0 +1,28 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.bordered-bottom.bordered-blue
+						span.widget-caption 添加角色
+					.widget-body
+						div
+							form(role='form', method="post")
+								.form-group
+									label(for='exampleInputEmail1') 角色名称：
+									input#exampleInputEmail1.form-control(name="name", type='text', placeholder='')
+								.form-group
+									label(for='exampleInputPassword1') 角色描述：
+									input#exampleInputPassword1.form-control(name="remark", type='text', placeholder='')
+								.form-group
+									label 是否开启：
+									label
+										input.colored-blue(name='status', type='radio', value="1", checked)
+										span.text  开启
+									| 
+									label
+										input.colored-blue(name='status', type='radio', value="0")
+										span.text  关闭
+								button.btn.btn-blue(type='submit') 保存添加

@@ -1,0 +1,50 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.with-footer
+						span.widget-caption 用户如下：
+						.widget-buttons
+							a(href='javascript:void(0);', data-toggle='maximize')
+								i.fa.fa-expand
+							a(href='javascript:void(0);', data-toggle='collapse')
+								i.fa.fa-minus
+					.widget-body
+						.alert.alert-info.fade.in.alert-radius-bordered.alert-shadowed
+							button.close(data-dismiss='alert') ×
+							i.fa-fw.fa.fa-info
+							strong 说明 :
+							| xxxx
+						.flip-scroll
+							table.table.table-bordered.table-hover
+								thead.flip-content.bordered-palegreen
+									tr
+										th.numeric ID
+										th.numeric 用户名称
+										th.numeric 上一次登录时间
+										th.numeric 上一次登录IP
+										th.numeric 锁定状态
+										th.numeric 用户所属组
+										th.numeric 操作 
+								tbody
+									each data, key in lists
+										tr
+											td #{key + 1}
+											td #{data.name}
+											td #{data.time}
+											td #{data.ip}
+											td #{data.lock == 1 ? '锁定': '未锁定'}
+											td
+												each role, ckey in data.rolearr
+													span.label.label-success #{role.name}
+													| 
+											td
+												a.btn.btn-sky.btn-sm(href='javascript:void(0);') 锁定
+												| 
+												a.btn.btn-sky.btn-sm(href='javascript:void(0);') 修改
+										
+						h6
+							+m_pages()

@@ -1,0 +1,30 @@
+doctype html
+html(lang='zh-CN')
+	head
+		title= title
+		//- 引入公共样式
+		include styleJS
+		block styleJS
+	body
+		//- 索引值
+		block indexs
+		//- 引入公共代码块
+		include ../../module/mixins
+		//- 导航条
+		include navbar
+		.main-container.container-fluid
+			.page-container
+				//- 左侧边栏
+				include sidebar
+				.page-content
+					//- 信息区域
+					include info
+					//- 内容区域
+					block content
+		//- 底部区域
+		block footer
+		//- 引入公共js
+		include javascripts
+		//- 底部js
+		block javascripts
+

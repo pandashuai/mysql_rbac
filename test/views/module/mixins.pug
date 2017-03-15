@@ -1,0 +1,73 @@
+mixin m_pages(page, total_page, page_rows, src, getype)
+	- getype = getype || '';
+	if page_rows
+		- var keyLeight = 7;
+		- var keys = 2;
+		- page = Number(page);
+		nav.text-center
+			ul.pagination
+				li
+					a(href=src +'1' + getype) 首页
+				li(class= page == 1 ? 'disabled' : '')
+					a(href=page == 1 ? 'javascript:void(0);' : (src + (page - 1) + getype))
+						| &laquo;
+				//- 判断是否需要显示省略号
+				if total_page <= keyLeight
+					//- 没有省略
+					- for (var i = 1; i <= total_page; i++)
+						//- 判断是否处于当前页
+						if page == i
+							li.active
+								a(href='javascript:void(0);') #{i}
+						else
+							li
+								a(href=src + i + getype) #{i}
+
+				else
+					//- 有省略号
+					//- 前几页
+					if page <= keyLeight - keys
+						- for (var i = 1; i < keyLeight; i++)
+							if page == i
+								li.active
+									a(href='javascript:void(0);') #{i}
+							else
+								li
+									a(href=src + i + getype) #{i}
+						li
+							a(href=src + total_page + getype)
+								span.sr-only #{total_page}
+
+					//- 后几页
+					else if page >= total_page - keys
+						li
+							a(href=src + 1 + getype)
+								span.sr-only 1
+						- for (var i = total_page - keyLeight + 1; i <= total_page; i++)
+							if page == i
+								li.active
+									a(href='javascript:void(0);') #{i}
+							else
+								li
+									a(href=src + i + getype) #{i}
+					//- 中间
+					else
+						li
+							a(href=src + 1 + getype)
+								span.sr-only 1
+						-for (var i = page - keys; i <= page + keys; i++)
+							if page == i
+								li.active
+									a(href='javascript:void(0);') #{i}
+							else
+								li
+									a(href=src + i + getype) #{i}
+						li
+							a(href=src + total_page + getype)
+								span.sr-only #{total_page}
+
+				li(class= page == total_page ? 'disabled' : '')
+					a(href=page == total_page ? 'javascript:void(0);' : (src + (page + 1) + getype))
+						| &raquo;
+				li
+					a(href=src + total_page + getype) 尾页

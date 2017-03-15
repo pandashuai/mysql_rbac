@@ -1,0 +1,31 @@
+extends ./lib/layout
+
+block content
+	.container
+		.user-login-container
+			.panel.panel-default
+				.panel-heading
+					h3.panel-title 用户登录
+				.panel-body
+					form.form-horizontal(role='form', method='post')
+						.form-group.has-error
+							label.col-sm-2.control-label 用户名：
+							.col-sm-10
+								input.form-control(name='username', placeholder='请输入用户名...', required='', type='text')
+								.text-danger 用户名必须输入！
+						.form-group.has-error
+							label.col-sm-2.control-label 密码：
+							.col-sm-10
+								input.form-control(minlength='6', name='password', placeholder='请输入密码...', required='', type='password')
+								.text-danger 密码必须输入,至少要6位！
+						.form-group
+							.col-sm-offset-2.col-sm-10
+								.checkbox
+									label
+										input(name='remeberMe', type='checkbox')
+										| 记住我
+						.form-group
+							.col-sm-offset-2.col-sm-10
+								button.btn.btn-success(type='submit') 登录	
+								|	
+								button.btn.btn-danger(type='button') 忘记密码？

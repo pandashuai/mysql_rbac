@@ -1,0 +1,26 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.bordered-bottom.bordered-blue
+						span.widget-caption 添加权限
+					.widget-body
+						div
+							form(role='form', method='post')
+								.form-group
+									label(for='exampleInputEmail1') 权限名
+									input#exampleInputEmail1.form-control(name='name', type='name', placeholder='')
+								.form-group
+									label(for='exampleInputPassword1') 权限路由
+									input#exampleInputPassword1.form-control(name='route', type='text', placeholder='')
+								.form-group
+									label(for='exampleInputPassword1') 权限分类
+									select.form-control(name='tag', data-bv-field='country')
+										each tag, tkey in tags
+											option(value=tag.id) #{tag.name}
+										i.form-control-feedback(data-bv-field='country', style='display: none;')
+										i.form-control-feedback(data-bv-field='country', style='display: none;')
+								button.btn.btn-blue(type='submit') 保存添加

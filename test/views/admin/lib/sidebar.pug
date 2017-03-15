@@ -1,0 +1,72 @@
+#sidebar.page-sidebar
+	//- 页面边栏搜索
+	.sidebar-header-wrapper
+		input.searchinput(type='text')
+		i.searchicon.fa.fa-search
+		.searchhelper 搜索报表，图表，电子邮件或通知
+	//- /页面边栏搜索
+	//- 权限管理: 'd'; 
+	//- 权限管理-用户列表: 'd-ul'; 
+	//- 权限管理-角色列表: 'd-rl'; 
+	//- 权限管理-节点列表: 'd-nl'; 
+	//- 权限管理-添加用户: 'd-au'; 
+	//- 权限管理-添加角色: 'd-ar'; 
+	//- 权限管理-添加节点: 'd-an'; 
+
+	- 
+		var tmpS = {
+			index: indexType, 
+			d: 'd',
+			dul:'d-ul',
+			drl:'d-rl',
+			dnl:'d-nl',
+			dnt:'d-nt',
+			dau:'d-au',
+			dar:'d-ar',
+			dat:'d-at',
+			dan:'d-an'
+		};
+
+
+	ul.nav.sidebar-menu
+		//- 首页
+		li(class=`${tmpS.index == tmpS.aa ? 'active' : ''}`)
+			a(href=`#`)
+				i.menu-icon.glyphicon.glyphicon-envelope
+				span.menu-text 首页
+		//- 权限管理
+		li(class=`${tmpS.index.split('-')[0] == tmpS.d ? 'open' : ''}`)
+			a.menu-dropdown(href='#')
+				i.menu-icon.glyphicon.glyphicon-list
+				span.menu-text 权限管理
+				i.menu-expand
+			ul.submenu
+				li(class=`${tmpS.index == tmpS.dul ? 'active' : ''}`)
+					a(href=`/admin/userlist?indextype=${tmpS.dul}`)
+						span.menu-text 用户列表
+				li(class=`${tmpS.index == tmpS.drl ? 'active' : ''}`)
+					a(href=`/admin/rolelist?indextype=${tmpS.drl}`)
+						span.menu-text 角色列表
+				li(class=`${tmpS.index == tmpS.dnl ? 'active' : ''}`)
+					a(href=`/admin/nodelist?indextype=${tmpS.dnl}`)
+						span.menu-text 节点列表
+				li(class=`${tmpS.index == tmpS.dnt ? 'active' : ''}`)
+					a(href=`/admin/nodetag?indextype=${tmpS.dnt}`)
+						span.menu-text 节点分类列表
+				li(class=`${tmpS.index == tmpS.dau ? 'active' : ''}`)
+					a(href=`/admin/adduser?indextype=${tmpS.dau}`)
+						span.menu-text 添加用户
+				li(class=`${tmpS.index == tmpS.dar ? 'active' : ''}`)
+					a(href=`/admin/addrole?indextype=${tmpS.dar}`)
+						span.menu-text 添加角色
+				li(class=`${tmpS.index == tmpS.dan ? 'active' : ''}`)
+					a(href=`/admin/addnode?indextype=${tmpS.dan}`)
+						span.menu-text 添加节点
+				li(class=`${tmpS.index == tmpS.dat ? 'active' : ''}`)
+					a(href=`/admin/addnodetag?indextype=${tmpS.dat}`)
+						span.menu-text 添加节点分类
+		//- 退出
+		li
+			a(href=`/logout`)
+				i.menu-icon.glyphicon.glyphicon-exclamation-sign
+				span.menu-text 退出

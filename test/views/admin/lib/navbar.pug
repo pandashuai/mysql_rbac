@@ -1,0 +1,46 @@
+//- 加载等待
+.loading-container
+	.loading-progress
+		.rotator
+			.rotator
+				.rotator.colored
+					.rotator
+						.rotator.colored
+							.rotator.colored
+							.rotator
+						.rotator.colored
+					.rotator
+				.rotator
+			.rotator
+		.rotator
+//- /加载等待
+.navbar
+	.navbar-inner
+		.navbar-container
+			//- 导航栏
+			.navbar-header.pull-left
+				a.navbar-brand(href='#')
+					small
+						img(src=`/images/public/logo.png`, alt='')
+			//- /导航栏
+			//- 侧边栏收起
+			#sidebar-collapse.sidebar-collapse
+				i.collapse-icon.fa.fa-bars
+			//- /侧边栏收起
+			//- 帐户区域和设置
+			.navbar-header.pull-right
+				.navbar-account
+					ul.account-area
+						li
+							a.login-area.dropdown-toggle(data-toggle='dropdown')
+								.avatar(title='View your public profile')
+									img(src=`/images/login/cover.jpg`)
+								section
+									h2
+										span.profile.userNick
+											span
+							//- 登录区下拉
+							ul.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area
+								li.dropdown-footer
+									a(href=`/logout`)
+										| 退出

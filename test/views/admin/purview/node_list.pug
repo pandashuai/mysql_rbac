@@ -1,0 +1,43 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.with-footer
+						span.widget-caption 用户如下：
+						.widget-buttons
+							a(href='javascript:void(0);', data-toggle='maximize')
+								i.fa.fa-expand
+							a(href='javascript:void(0);', data-toggle='collapse')
+								i.fa.fa-minus
+					.widget-body
+						.alert.alert-info.fade.in.alert-radius-bordered.alert-shadowed
+							button.close(data-dismiss='alert') ×
+							i.fa-fw.fa.fa-info
+							strong 说明 :
+							| xxxx
+						.flip-scroll
+							table.table.table-bordered.table-hover
+								thead.flip-content.bordered-palegreen
+									tr
+										th.numeric ID
+										th.numeric 权限名
+										th.numeric 权限路由
+										th.numeric 所属分类
+										th.numeric 操作
+								tbody
+									each data, key in lists
+										tr
+											td #{key + 1}
+											td #{data.name}
+											td #{data.route}
+											td #{data.tag_name}
+											td
+												a.btn.btn-sky.btn-sm(href='javascript:void(0);') 修改
+												| 
+												a.btn.btn-sky.btn-sm(href='javascript:void(0);') 删除
+										
+						h6
+							+m_pages()

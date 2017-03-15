@@ -1,0 +1,45 @@
+extends ../lib/layout
+
+block content
+	.page-body
+		.row
+			.col-xs-12.col-md-12
+				.widget
+					.widget-header.with-footer
+						span.widget-caption 客户数据如下：
+						.widget-buttons
+							a(href='javascript:void(0);', data-toggle='maximize')
+								i.fa.fa-expand
+							a(href='javascript:void(0);', data-toggle='collapse')
+								i.fa.fa-minus
+					.widget-body
+						.alert.alert-info.fade.in.alert-radius-bordered.alert-shadowed
+							button.close(data-dismiss='alert') ×
+							i.fa-fw.fa.fa-info
+							strong 说明 :
+							| 单击即可进入详情页
+						.flip-scroll
+							table.table.table-bordered.table-hover
+								thead.flip-content.bordered-palegreen
+									tr
+										th.numeric ID
+										th.numeric 角色名称
+										th.numeric 角色描述
+										th.numeric 开启状态
+										th.numeric 操作 
+								tbody
+									each data, key in lists
+										tr
+											td #{data.id}
+											td #{data.name}
+											td #{data.remark}
+											td 
+												if data.status
+													| 开启
+												else
+													| 关闭
+											td
+												a.btn.btn-sky.btn-sm(href=`/admin/rolelist/edit/${data.id}?indextype=${tmpS.dnl}`) 编辑权限
+										
+						h6
+							+m_pages()
