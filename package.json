@@ -2,12 +2,12 @@
   "name": "mysql_rbac",
   "version": "1.2.0",
   "description": "",
-  "main": "lib/rabc.js",
+  "main": "lib/rbac.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "rabc"
+    "rbac"
   ],
   "author": "邓登攀",
   "license": "ISC",
@@ -17,9 +17,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pandashuai/mysql_rabc.git"
+    "url": "https://github.com/pandashuai/mysql_rbac.git"
   },
   "bugs": {
-    "url": "https://github.com/pandashuai/mysql_rabc/issues"
+    "url": "https://github.com/pandashuai/mysql_rbac/issues"
   }
 }
