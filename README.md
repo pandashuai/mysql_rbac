@@ -207,4 +207,4 @@ MIT
 
 ### 支持
 
-如果觉得对自己有用，记得在[https://github.com/pandashuai/mysql_rabc](https://github.com/pandashuai/mysql_rabc) 点 star 支持一下，你的支持是本人的无限动力！
+如果觉得对自己有用，记得在[https://github.com/pandashuai/mysql_rbac](https://github.com/pandashuai/mysql_rbac) 点 star 支持一下，你的支持是本人的无限动力！
