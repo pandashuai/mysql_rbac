@@ -4,7 +4,7 @@
 
 
 ### 依赖模块.
-
+  - express
   - express-session
   - mysql
 
@@ -112,8 +112,11 @@ app.use(rbac({
 注意：要在express-session配置参数之后初始化
 
 如： 
+var http = require('http');
+var express = require('express');
 var session = require('express-session');
 var rbac = require('mysql_rbac');
+var app = express();
 <!-- express-session初始化  -->
 app.use(session({
     secret: 'mysql_rbac',
@@ -129,6 +132,9 @@ app.use(rbac({
 以下挂载你的路由
 app.use('/', index);
 
+http.createServer(app).listen('3000', function() {
+    console.log(`NodePress Run！port at 3000`)
+});
 ```
 
 #### 3，使用
