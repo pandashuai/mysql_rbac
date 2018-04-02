@@ -67,6 +67,7 @@ CREATE TABLE `node` (
   `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `route` text COMMENT '所属路由 *必要',
+  `method` varchar(10) COMMENT '所属路由方法 GET POST GET/POST *必要',
   `tag` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '权限分类',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
@@ -92,7 +93,10 @@ app.use(rbac({
         'user': 'user', //用户表名称 *可选 默认为user
         'userTrole': 'role_id', //在用户表储存角色表id的字段 *可选 默认为role_id
         'roleTnode': 'node_id', //在角色表储存权限表id的字段  *可选 默认为node_id 
-        'nodeTroute': 'route' //在权限表储存判断权限路由的字段  *可选 默认为route 
+        'nodeTroute': 'route', //在权限表储存判断权限路由的字段  *可选 默认为route
+        'nodeTmethod': 'method', //在权限表储存判断权限路由方法的字段  *可选 默认为method ,
+        'userName': 'username', //用户表的用户名字段  *可选 默认为username ,
+        'superUser': 'admin' //用户表的用户名，该用户拥有最高权限 *可选 默认为空
     },
     mysql: {
         'host': '127.0.0.1', //IP/域名 *可选 默认为127.0.0.1
@@ -131,7 +135,19 @@ app.use(rbac({
 
 以下挂载你的路由
 app.use('/', index);
+router.get('/rolelist', function(req, res, next) {
+  <!-- 权限判断 req.is_root 参数可修改 在 初始化的hoot.root中修改 默认为is_root -->
+  req.is_root(function(status){       
+        if( !status ){
+          <!-- 可在这定义自定模板 -->
+          return res.end('没有权限！');
+        }
+      
+    res.end('正常逻辑业务');
+        <!-- 以下是 正常处理逻辑业务！ -->
 
+    });
+});
 http.createServer(app).listen('3000', function() {
     console.log(`NodePress Run！port at 3000`)
 });
@@ -206,6 +222,9 @@ router.get('/rolelist', is_root, function(req, res, next) {
 
 ```
 
+### 日志
+
+2018-04-02 增加路由表对method的支持,并增加最高权限的字段分配，分别对应`nodeTmethod`,`userName`, `superUser`三个参数
 
 ### 许可证
 

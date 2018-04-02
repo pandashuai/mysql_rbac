@@ -22,7 +22,7 @@ block content
 											.radio
 												label
 													input.colored-blue(name='node_id', type='checkbox',value=child.id, checked=child.isChecked)
-													span.text  #{child.name}
+													span.text  #{child.name}(#{child.method}:#{child.route})
 						.row
 							.col-md-12.txt-centent
 								button.btn.btn-blue(type='submit') 保存添加

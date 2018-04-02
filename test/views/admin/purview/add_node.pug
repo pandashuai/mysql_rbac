@@ -17,6 +17,12 @@ block content
 									label(for='exampleInputPassword1') 权限路由
 									input#exampleInputPassword1.form-control(name='route', type='text', placeholder='')
 								.form-group
+									label(for='exampleInputPassword2') 路由方法
+									select.form-control(name='method')
+										option(value='GET/POST') GET/POST
+										option(value='GET') GET
+										option(value='POST') POST
+								.form-group
 									label(for='exampleInputPassword1') 权限分类
 									select.form-control(name='tag', data-bv-field='country')
 										each tag, tkey in tags

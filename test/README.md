@@ -12,7 +12,7 @@ npm install
 
 ```sh
 
-在根目录找到mysq_rbac.sql数据库文件并导入mysql数据库
+在根目录找到rbac.sql数据库文件并导入mysql数据库
 
 ```
 

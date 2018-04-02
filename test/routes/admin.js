@@ -47,7 +47,7 @@ router.get('/userlist', fn.is_root, function(req, res, next) {
 });
 
 // 角色列表
-router.get('/rolelist',fn.is_root, function(req, res, next) {
+router.get('/rolelist', fn.is_root, function(req, res, next) {
     mysql.eachrole(function(data) {
         res.locals.lists = data;
         res.render('admin/purview/role_list');
@@ -72,12 +72,12 @@ router.get('/nodelist', fn.is_root, function(req, res, next) {
 });
 
 // 添加用户
-router.get('/adduser',fn.is_root, function(req, res, next) {
+router.get('/adduser', fn.is_root, function(req, res, next) {
     mysql.eachrole(function(rolelist) {
         res.locals.rolelists = rolelist;
         res.render('admin/purview/add_user');
     });
-}).post('/adduser',fn.is_root, function(req, res, next) {
+}).post('/adduser', fn.is_root, function(req, res, next) {
     var body = req.body;
     var ip = req.ip.replace(/[:f]/g, '');
     var logintime = moment().unix();
@@ -96,11 +96,11 @@ router.get('/adduser',fn.is_root, function(req, res, next) {
 });
 
 // 添加角色 
-router.get('/addrole',fn.is_root, function(req, res, next) {
+router.get('/addrole', fn.is_root, function(req, res, next) {
 
     res.render('admin/purview/add_role');
 
-}).post('/addrole',fn.is_root, function(req, res, next) {
+}).post('/addrole', fn.is_root, function(req, res, next) {
     var body = req.body;
     var arr = [body.name, body.status, body.remark];
     mysql.addrole(arr, function(status) {
@@ -111,15 +111,14 @@ router.get('/addrole',fn.is_root, function(req, res, next) {
     });
 });
 // 添加节点 
-router.get('/addnode',fn.is_root, function(req, res, next) {
+router.get('/addnode', fn.is_root, function(req, res, next) {
     mysql.eachnodetag(function(tag) {
         res.locals.tags = tag;
         res.render('admin/purview/add_node');
     });
 }).post('/addnode', function(req, res, next) {
     var data = req.body;
-    console.log(data)
-    var arr = [data.name, data.route, data.tag];
+    var arr = [data.name, data.route, (data.method || 'GET/POST'), data.tag];
     mysql.addnode(arr, function(status) {
         if (status) {
             // 返回上一级
@@ -160,6 +159,7 @@ router.get('/rolelist/edit/:id', fn.is_root, function(req, res, next) {
                 tmpobj[obj.tag_name].child.push({
                     name: obj.name,
                     route: obj.route,
+                    method: obj.method,
                     id: obj.id,
                     isChecked: (checked.indexOf(obj.id.toString()) != '-1' ? true : false)
                 })
@@ -172,7 +172,7 @@ router.get('/rolelist/edit/:id', fn.is_root, function(req, res, next) {
             res.render('admin/purview/role_node_edit');
         })
     })
-}).post('/rolelist/edit/:id', function(req, res, next) {
+}).post('/rolelist/edit/:id', fn.is_root, function(req, res, next) {
     var id = req.params.id;
     var node_id = typeof(req.body.node_id) == 'string' ? req.body.node_id : (req.body.node_id || []).join(',');
     mysql.updaterole([node_id, id], function(status) {

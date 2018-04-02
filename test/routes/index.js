@@ -19,14 +19,13 @@ router.get('/login', function(req, res, next) {
 }).post('/login', function(req, res, next) {
     var name = req.body.username;
     var pwd = req.body.password;
-    console.log(name, pwd);
     mysql.isUser([name, pwd], function(id) {
-    	if(id){
+        if (id) {
             // 此req.session.uid 要配置在rbac.rbac.user_key
-    		req.session.uid = id;
-       		res.redirect('back');
-    	}
-    	res.end("登录错误");
+            req.session.uid = id;
+            return res.redirect('back');
+        }
+        res.end("登录错误");
     });
 
 

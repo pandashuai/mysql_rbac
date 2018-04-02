@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // -------------------------------------------------
 // 引入模块
 var session = require('express-session');
-var rbac = require('mysql_rbac');
+var rbac = require('../lib/rbac');
 var mysqyconfig = require('./database/config');
 // -------------------------------------------------
 
@@ -48,7 +48,10 @@ app.use(rbac({
         'user': 'user', //用户表名称 *可选 默认为user
         'userTrole': 'role_id', //在用户表储存角色表id的字段 *可选 默认为role_id
         'roleTnode': 'node_id', //在角色表储存权限表id的字段  *可选 默认为node_id 
-        'nodeTroute': 'route' //在权限表储存判断权限路由的字段  *可选 默认为route 
+        'nodeTroute': 'route', //在权限表储存判断权限路由的字段  *可选 默认为route 
+        'nodeTmethod': 'method', //在权限表储存判断权限路由方法的字段  *可选 默认为method ,
+        'userName': 'username', //用户表的用户名字段  *可选 默认为username ,
+        'superUser': 'admin' //用户表的用户名，该用户拥有最高权限 *可选 默认为空
     },
     mysql: {
         'host': mysqyconfig.host, //IP/域名 *可选 默认为127.0.0.1
@@ -68,6 +71,7 @@ app.use(rbac({
 app.use((req, res, next) => {
     // 索引值
     res.locals.indexType = req.query.indextype || 'null';
+    res.setHeader('Content-Type', 'text/html;charset=utf-8');
     next();
 });
 app.use('/', index);

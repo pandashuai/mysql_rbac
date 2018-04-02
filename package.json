@@ -1,25 +1,25 @@
 {
-  "name": "mysql_rbac",
-  "version": "1.2.0",
-  "description": "",
-  "main": "lib/rbac.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "rbac"
-  ],
-  "author": "邓登攀",
-  "license": "ISC",
-  "dependencies": {
-    "mysql": "^2.13.0",
-    "q": "^1.4.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pandashuai/mysql_rbac.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pandashuai/mysql_rbac/issues"
-  }
+    "name": "mysql_rbac",
+    "version": "1.3.0",
+    "description": "",
+    "main": "lib/rbac.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "rbac"
+    ],
+    "author": "邓登攀",
+    "license": "ISC",
+    "dependencies": {
+        "mysql": "^2.13.0",
+        "q": "^1.4.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pandashuai/mysql_rbac.git"
+    },
+    "bugs": {
+        "url": "https://github.com/pandashuai/mysql_rbac/issues"
+    }
 }
